@@ -43,11 +43,21 @@ function SignupContent() {
     }
 
     setLoading(true);
+    if (typeof window !== 'undefined') {
+      document.cookie = 'campus_session=active; path=/; max-age=604800; SameSite=Lax';
+      localStorage.setItem('campus_user_session', JSON.stringify({
+        email,
+        name: fullName,
+        college: detectedCollege || 'RV College of Engineering',
+        role: 'student',
+      }));
+    }
+
+    toast.success('Node initialized! Proceeding to onboarding sequence...');
+    router.push(`/onboarding?intent=${intent}`);
     setTimeout(() => {
-      setLoading(false);
-      toast.success('Node initialized! Proceeding to onboarding sequence.');
-      router.push(`/onboarding?intent=${intent}`);
-    }, 700);
+      window.location.href = `/onboarding?intent=${intent}`;
+    }, 400);
   };
 
   return (
