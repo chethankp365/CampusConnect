@@ -21,6 +21,8 @@ import {
   Layers,
   ArrowRight,
   BrainCircuit,
+  MessageSquare,
+  CheckCircle,
 } from 'lucide-react';
 import { toast } from 'sonner';
 
@@ -38,7 +40,6 @@ export default function SkillMatchPage() {
 
     setIsSynthesizing(true);
     setTimeout(() => {
-      // Simulate Gemini extracting structured skills from natural language
       const lower = projectPrompt.toLowerCase();
       const skillsFound: string[] = [];
       if (lower.includes('flutter') || lower.includes('mobile')) skillsFound.push('Flutter');
@@ -56,13 +57,6 @@ export default function SkillMatchPage() {
     setExtractedSkills(extractedSkills.filter(s => s !== skill));
   };
 
-  const addSkill = (skill: string) => {
-    if (!extractedSkills.includes(skill)) {
-      setExtractedSkills([...extractedSkills, skill]);
-    }
-  };
-
-  // Rank candidate peers using our scoring engine
   const rankedPeers = MOCK_PEERS.map(p => {
     const result = calculateSkillMatch(
       {
@@ -92,28 +86,28 @@ export default function SkillMatchPage() {
 
   return (
     <AppShell>
-      <div className="space-y-8 font-body max-w-5xl mx-auto">
+      <div className="space-y-10 font-body">
         {/* Header */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-zinc-900">
-          <div>
-            <div className="flex items-center gap-2 mb-1">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pb-8 border-b border-zinc-900">
+          <div className="space-y-2">
+            <div className="flex items-center gap-2.5">
               <HudLabel label="SYNAPSE // NEURAL MATCH ENGINE" color="acid" />
-              <span className="text-zinc-500 font-mono text-xs">• Layer 1 (Rules) + Layer 2 (Gemini 768d)</span>
+              <span className="text-zinc-500 font-mono text-sm">• Layer 1 (Rules) + Layer 2 (Gemini 768d Embeddings)</span>
             </div>
-            <h1 className="text-2xl sm:text-3xl font-heading font-semibold text-white tracking-tight">
+            <h1 className="text-3xl sm:text-5xl font-heading font-bold text-white tracking-tight">
               Skill Match &amp; Squad Builder
             </h1>
-            <p className="text-zinc-400 font-mono text-xs mt-0.5">
-              Describe your project in natural language. Gemini extracts skills while the mathematical engine ranks complementary teammates.
+            <p className="text-zinc-400 font-mono text-sm max-w-2xl">
+              Describe your project idea in natural language. Gemini extracts skills while our mathematical engine ranks complementary teammates across 15 engineering campuses.
             </p>
           </div>
 
-          <div className="flex items-center gap-2 font-mono text-xs">
+          <div className="flex items-center gap-2.5 font-mono text-xs">
             <button
               onClick={() => setMode('teammates')}
-              className={`px-3 py-1.5 rounded-full border transition-all ${
+              className={`px-4 py-2 rounded-full border transition-all ${
                 mode === 'teammates'
-                  ? 'bg-signal text-white border-signal'
+                  ? 'bg-signal text-white border-signal shadow-lg shadow-signal/20'
                   : 'bg-zinc-900 text-zinc-400 border-zinc-800'
               }`}
             >
@@ -121,9 +115,9 @@ export default function SkillMatchPage() {
             </button>
             <button
               onClick={() => setMode('complementary')}
-              className={`px-3 py-1.5 rounded-full border transition-all ${
+              className={`px-4 py-2 rounded-full border transition-all ${
                 mode === 'complementary'
-                  ? 'bg-signal text-white border-signal'
+                  ? 'bg-signal text-white border-signal shadow-lg shadow-signal/20'
                   : 'bg-zinc-900 text-zinc-400 border-zinc-800'
               }`}
             >
@@ -131,9 +125,9 @@ export default function SkillMatchPage() {
             </button>
             <button
               onClick={() => setMode('teambuilder')}
-              className={`px-3 py-1.5 rounded-full border transition-all ${
+              className={`px-4 py-2 rounded-full border transition-all ${
                 mode === 'teambuilder'
-                  ? 'bg-signal text-white border-signal'
+                  ? 'bg-signal text-white border-signal shadow-lg shadow-signal/20'
                   : 'bg-zinc-900 text-zinc-400 border-zinc-800'
               }`}
             >
@@ -142,29 +136,29 @@ export default function SkillMatchPage() {
           </div>
         </div>
 
-        {/* Natural Language "Describe Your Project" Box */}
-        <BracketCard headerTag="GEMINI COGNITION // NATURAL LANGUAGE PARSER" glowColor="cyan">
-          <form onSubmit={handleSynthesize} className="space-y-4 font-mono text-xs">
-            <div className="space-y-1">
-              <label className="text-zinc-400 uppercase text-[10px] flex items-center justify-between">
+        {/* Natural Language "Describe Your Project" Box - Roomy */}
+        <BracketCard headerTag="GEMINI 2.5 COGNITION // NATURAL LANGUAGE PARSER" glowColor="cyan" className="p-8 sm:p-10">
+          <form onSubmit={handleSynthesize} className="space-y-6 font-mono text-xs sm:text-sm">
+            <div className="space-y-2">
+              <label className="text-zinc-400 uppercase text-xs flex items-center justify-between font-semibold">
                 <span>Describe Your Idea, Problem Statement, or Hackathon Track</span>
-                <span className="text-acid">GEMINI 2.5 FLASH ACTIVE</span>
+                <span className="text-acid">LLM PARSING CORE READY</span>
               </label>
               <textarea
                 rows={3}
                 value={projectPrompt}
                 onChange={e => setProjectPrompt(e.target.value)}
-                className="w-full px-4 py-3 rounded-xl bg-zinc-900 border border-zinc-800 text-white font-mono text-xs focus:outline-none focus:border-cyan leading-relaxed"
+                className="w-full px-5 py-4 rounded-2xl bg-zinc-900 border border-zinc-800 text-white font-mono text-sm sm:text-base focus:outline-none focus:border-cyan leading-relaxed shadow-inner"
               />
             </div>
 
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-1">
-              <div className="flex items-center gap-2 flex-wrap">
-                <span className="text-zinc-500 text-[10px] uppercase">Active Target Skills:</span>
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pt-2">
+              <div className="flex items-center gap-3 flex-wrap">
+                <span className="text-zinc-500 uppercase text-xs font-semibold">Target Skills:</span>
                 {extractedSkills.map(s => (
                   <span
                     key={s}
-                    className="px-2.5 py-1 rounded-full bg-cyan/15 text-cyan border border-cyan/30 flex items-center gap-1.5 text-xs"
+                    className="px-3.5 py-1.5 rounded-full bg-cyan/15 text-cyan border border-cyan/30 flex items-center gap-2 text-xs font-medium"
                   >
                     <span>{s}</span>
                     <button
@@ -181,40 +175,41 @@ export default function SkillMatchPage() {
               <button
                 type="submit"
                 disabled={isSynthesizing}
-                className="px-4 py-2 rounded-full bg-cyan text-black font-bold font-mono text-xs hover:bg-cyan/90 transition-colors flex items-center gap-1.5 shadow-md shadow-cyan/20 cursor-pointer"
+                className="px-6 py-3 rounded-2xl bg-cyan text-black font-bold font-mono text-sm hover:bg-cyan/90 transition-all flex items-center gap-2 shadow-lg shadow-cyan/20 cursor-pointer active:scale-95 self-start lg:self-auto"
               >
-                <Sparkles className="w-3.5 h-3.5" />
-                <span>{isSynthesizing ? 'SYNTHESIZING...' : 'PARSE SKILLS'}</span>
+                <Sparkles className="w-4 h-4" />
+                <span>{isSynthesizing ? 'SYNTHESIZING...' : 'PARSE SKILLS VIA GEMINI'}</span>
               </button>
             </div>
           </form>
         </BracketCard>
 
-        {/* Ranked Match Results */}
-        <div className="space-y-4">
-          <div className="flex items-center justify-between font-mono text-xs text-zinc-400">
+        {/* Ranked Match Results Grid */}
+        <div className="space-y-6">
+          <div className="flex items-center justify-between font-mono text-xs sm:text-sm text-zinc-400">
             <span>RANKED CANDIDATES (ORDERED BY COSINE SIMILARITY + SKILL RULES)</span>
-            <span className="text-acid">{rankedPeers.length} PEERS EVALUATED</span>
+            <span className="text-acid font-bold">{rankedPeers.length} CANDIDATES EVALUATED</span>
           </div>
 
-          <div className="space-y-4">
+          <div className="grid grid-cols-1 gap-6">
             {rankedPeers.map((peer, idx) => (
               <BracketCard
                 key={peer.id}
                 headerTag={`CANDIDATE #0${idx + 1} // AFFINITY: ${peer.result.score}%`}
                 glowColor={peer.result.score >= 80 ? 'acid' : 'none'}
+                className="p-8 sm:p-10"
               >
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                  <div className="flex items-start gap-4">
+                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+                  <div className="flex items-start gap-6">
                     <img
                       src={peer.avatarUrl}
                       alt={peer.fullName}
-                      className="w-14 h-14 rounded-2xl object-cover border-2 border-zinc-700 shadow-md"
+                      className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl object-cover border-2 border-zinc-700 shadow-xl shrink-0"
                     />
 
-                    <div className="space-y-1">
-                      <div className="flex items-center gap-2">
-                        <h3 className="text-lg font-heading font-semibold text-white">
+                    <div className="space-y-2">
+                      <div className="flex items-center gap-3">
+                        <h3 className="text-xl sm:text-2xl font-heading font-bold text-white">
                           {peer.fullName}
                         </h3>
                         <span className="font-mono text-xs text-zinc-500">
@@ -222,26 +217,38 @@ export default function SkillMatchPage() {
                         </span>
                       </div>
 
-                      <div className="text-xs font-mono text-zinc-400">
-                        {peer.collegeName} • {peer.branch} (Sem {peer.semester})
+                      <div className="text-sm font-mono text-zinc-400">
+                        {peer.collegeName} • {peer.branch} (Semester {peer.semester})
                       </div>
 
-                      <p className="text-xs font-mono text-acid pt-1">
+                      <p className="text-sm font-mono text-acid pt-1 leading-relaxed">
                         {peer.result.explanation}
                       </p>
+
+                      <div className="flex flex-wrap gap-1.5 pt-2">
+                        {peer.skills.map((s, i) => (
+                          <span
+                            key={i}
+                            className="px-2.5 py-1 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-300 font-mono text-xs"
+                          >
+                            {s.name} ({s.level})
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
 
                   {/* Score Gauge & Action */}
-                  <div className="flex sm:flex-col items-center sm:items-end justify-between sm:justify-center gap-3 font-mono">
-                    <ProgressRing progress={peer.result.score} size={54} color="auto" />
+                  <div className="flex sm:flex-row lg:flex-col items-center lg:items-end justify-between lg:justify-center gap-5 font-mono pt-4 lg:pt-0 border-t lg:border-t-0 border-zinc-900">
+                    <ProgressRing progress={peer.result.score} size={68} color="auto" />
                     <PillButton
                       variant="signal"
                       onClick={() => {
                         toast.success(`Invite dispatched to @${peer.username}!`);
                       }}
+                      className="text-sm px-6 py-2.5"
                     >
-                      <UserPlus className="w-3.5 h-3.5 mr-1.5" /> Invite to Squad
+                      <UserPlus className="w-4 h-4 mr-2" /> Invite to Squad
                     </PillButton>
                   </div>
                 </div>

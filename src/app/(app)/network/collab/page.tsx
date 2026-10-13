@@ -15,6 +15,10 @@ import {
   CheckCircle,
   MessageSquare,
   Sparkles,
+  Zap,
+  Target,
+  Send,
+  Calendar,
 } from 'lucide-react';
 import { toast } from 'sonner';
 
@@ -28,6 +32,7 @@ interface CollabPost {
   teamSize: number;
   currentSize: number;
   matchScore: number;
+  targetHackathon: string;
 }
 
 const INITIAL_COLLABS: CollabPost[] = [
@@ -36,22 +41,36 @@ const INITIAL_COLLABS: CollabPost[] = [
     creator: 'Ananya Deshmukh',
     college: 'BMSCE',
     title: 'HackGrid 2026: AI Healthcare Triage System',
-    description: 'Building an automated vernacular voice assistant for rural PHCs in Karnataka. We need a Next.js frontend lead and a Python fastAPI backend developer.',
+    description: 'Building an automated vernacular voice assistant for rural PHCs in Karnataka. We have biomedical dataset pipelines ready. Seeking a Next.js frontend lead and a Python fastAPI backend developer with pgvector experience.',
     skillsNeeded: ['Next.js', 'Python', 'Tailwind CSS', 'FastAPI'],
     teamSize: 4,
     currentSize: 2,
     matchScore: 92,
+    targetHackathon: 'HackGrid 2026 (PES University)',
   },
   {
     id: 'col_2',
     creator: 'Karthik Raman',
     college: 'PES University',
-    title: 'Autonomous Drone Swarm for Campus Delivery',
-    description: 'Hardware + computer vision project for autonomous parcel navigation across college tech quadrangles. Seeking embedded C++ or ROS engineers.',
+    title: 'Autonomous Drone Swarm for Campus Parcel Delivery',
+    description: 'Hardware + computer vision project for autonomous delivery navigation across college tech quadrangles. Seeking embedded C++ or ROS engineers with experience in edge tensor processing.',
     skillsNeeded: ['C++', 'Embedded Systems', 'Computer Vision', 'ROS'],
     teamSize: 3,
     currentSize: 2,
     matchScore: 68,
+    targetHackathon: 'Bangalore Robotics Olympiad',
+  },
+  {
+    id: 'col_3',
+    creator: 'Sahana Kulkarni',
+    college: 'RVCE',
+    title: 'Zero-Knowledge Credential Vault for University Degrees',
+    description: 'Building a privacy-first verifiable credential issuer using Circom and Ethereum zk-SNARKs. Seeking cryptographic protocol research enthusiasts and Solidity developers.',
+    skillsNeeded: ['Rust', 'Solidity', 'Zero Knowledge Proofs', 'TypeScript'],
+    teamSize: 4,
+    currentSize: 3,
+    matchScore: 84,
+    targetHackathon: 'ETHDenver India Edition',
   },
 ];
 
@@ -61,10 +80,11 @@ export default function CollabBoardPage() {
   const [title, setTitle] = useState('');
   const [desc, setDesc] = useState('');
   const [skills, setSkills] = useState('React.js, Python, Figma');
+  const [hackathon, setHackathon] = useState('Smart India Hackathon');
   const [teamSize, setTeamSize] = useState(4);
 
-  const handleJoin = (id: string) => {
-    toast.success('Join request sent to project leader with your skill portfolio! (+10 XP on join)');
+  const handleJoin = (title: string) => {
+    toast.success(`Join request dispatched to team leader for "${title}"! (+10 XP on approval)`);
   };
 
   const handleCreate = (e: React.FormEvent) => {
@@ -81,6 +101,7 @@ export default function CollabBoardPage() {
       teamSize,
       currentSize: 1,
       matchScore: 100,
+      targetHackathon: hackathon || 'National Hackathon',
     };
 
     setCollabs([newPost, ...collabs]);
@@ -92,140 +113,187 @@ export default function CollabBoardPage() {
 
   return (
     <AppShell>
-      <div className="space-y-8 font-body max-w-5xl mx-auto">
+      <div className="space-y-8 font-body w-full">
         {/* Header */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-zinc-900">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-zinc-900">
           <div>
             <Link
               href="/network"
-              className="inline-flex items-center text-xs font-mono text-zinc-400 hover:text-signal mb-2"
+              className="inline-flex items-center text-xs font-mono text-zinc-400 hover:text-signal mb-2 transition-colors"
             >
-              <ArrowLeft className="w-3.5 h-3.5 mr-1" /> RETURN TO DIRECTORY
+              <ArrowLeft className="w-4 h-4 mr-1.5" /> RETURN TO DIRECTORY
             </Link>
-            <h1 className="text-2xl sm:text-3xl font-heading font-semibold text-white tracking-tight">
-              Teammate Match &amp; Collab Board
-            </h1>
-            <p className="text-zinc-400 font-mono text-xs mt-0.5">
-              Form cross-campus squads for national hackathons, capstone projects, and startup MVPs.
+            <div className="flex items-center gap-3">
+              <h1 className="text-3xl sm:text-4xl font-heading font-bold text-white tracking-tight">
+                Hackathon Squads &amp; Collab Board
+              </h1>
+              <HudLabel label="CROSS-CAMPUS SQUADS" color="acid" />
+            </div>
+            <p className="text-zinc-400 font-mono text-sm mt-1 max-w-3xl">
+              Form cross-campus squads for national hackathons, capstone projects, and deep-tech startup MVPs across college boundaries.
             </p>
           </div>
 
           <PillButton variant="signal" onClick={() => setCreateModal(true)}>
-            <Plus className="w-3.5 h-3.5 mr-1.5" /> Create Collab Post
+            <Plus className="w-4 h-4 mr-2" /> Create Collab Post
           </PillButton>
         </div>
 
-        {/* Collab Posts Feed */}
+        {/* Collab Posts Feed - Expansive Cards */}
         <div className="space-y-6">
           {collabs.map(col => (
             <BracketCard
               key={col.id}
-              headerTag={`TEAM ROSTER // ${col.currentSize} OF ${col.teamSize} SPOTS`}
+              headerTag={`TEAM ROSTER // ${col.currentSize} OF ${col.teamSize} FILLED`}
               glowColor="acid"
+              className="p-6"
             >
-              <div className="space-y-4">
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <div className="space-y-5">
+                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4 border-b border-zinc-900">
                   <div>
-                    <span className="font-mono text-xs text-acid">
-                      Initiated by {col.creator} [{col.college}]
-                    </span>
-                    <h3 className="text-lg font-heading font-bold text-white mt-1">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="font-mono text-xs text-acid font-bold">
+                        INITIATED BY {col.creator.toUpperCase()} [{col.college}]
+                      </span>
+                      <span className="text-zinc-600 font-mono text-xs">•</span>
+                      <span className="text-zinc-400 font-mono text-xs flex items-center gap-1">
+                        <Target className="w-3.5 h-3.5 text-signal" /> {col.targetHackathon}
+                      </span>
+                    </div>
+                    <h3 className="text-xl sm:text-2xl font-heading font-bold text-white">
                       {col.title}
                     </h3>
                   </div>
 
-                  <div className="flex items-center gap-3">
-                    <span className="font-mono text-xs text-zinc-400">Match Affinity:</span>
-                    <ProgressRing progress={col.matchScore} size={42} color="acid" />
+                  <div className="flex items-center gap-4 bg-zinc-900/60 px-4 py-2 rounded-2xl border border-zinc-800">
+                    <div>
+                      <span className="font-mono text-[10px] text-zinc-500 uppercase block">Skill Synergy</span>
+                      <span className="font-mono text-sm font-bold text-white">{col.matchScore}% Match</span>
+                    </div>
+                    <ProgressRing progress={col.matchScore} size={46} color="acid" />
                   </div>
                 </div>
 
-                <p className="text-zinc-300 font-mono text-xs leading-relaxed">
+                <p className="text-zinc-300 font-mono text-sm leading-relaxed max-w-4xl">
                   {col.description}
                 </p>
 
-                <div>
-                  <span className="font-mono text-[10px] text-zinc-500 uppercase block mb-1.5">
-                    Skills Required for Team:
+                {/* Team Roster Slot Visualizer */}
+                <div className="space-y-2">
+                  <span className="font-mono text-xs text-zinc-500 uppercase tracking-wider block">
+                    Squad Formation ({col.currentSize} / {col.teamSize} Nodes Assembled):
                   </span>
-                  <div className="flex flex-wrap gap-1.5">
-                    {col.skillsNeeded.map(s => (
-                      <span
-                        key={s}
-                        className="px-2.5 py-0.5 rounded-full bg-zinc-900 border border-zinc-800 font-mono text-xs text-zinc-300"
-                      >
-                        {s}
-                      </span>
-                    ))}
+                  <div className="flex flex-wrap gap-3">
+                    {Array.from({ length: col.teamSize }).map((_, idx) => {
+                      const isOccupied = idx < col.currentSize;
+                      return (
+                        <div
+                          key={idx}
+                          className={`px-4 py-2 rounded-xl font-mono text-xs flex items-center gap-2 transition-all ${
+                            isOccupied
+                              ? 'bg-zinc-900 border border-zinc-700 text-white'
+                              : 'bg-zinc-950 border border-dashed border-zinc-800 text-zinc-500'
+                          }`}
+                        >
+                          <div className={`w-2 h-2 rounded-full ${isOccupied ? 'bg-acid' : 'bg-zinc-700'}`} />
+                          <span>{isOccupied ? `Node #${idx + 1} Locked` : `Open Role #${idx + 1}`}</span>
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
 
-                <div className="pt-4 border-t border-zinc-900 flex items-center justify-between">
-                  <div className="font-mono text-xs text-zinc-500">
-                    STATUS: {col.teamSize - col.currentSize} SEATS REMAINING
+                {/* Skills tags and Apply Button */}
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-4 border-t border-zinc-900">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="font-mono text-xs text-zinc-500 mr-1">LOOKING FOR:</span>
+                    {col.skillsNeeded.map((skill, idx) => (
+                      <span
+                        key={idx}
+                        className="px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-300 font-mono text-xs hover:border-acid transition-colors"
+                      >
+                        {skill}
+                      </span>
+                    ))}
                   </div>
-                  <PillButton variant="signal" onClick={() => handleJoin(col.id)}>
-                    Request to Join Team &rarr;
-                  </PillButton>
+
+                  <div className="flex items-center gap-3">
+                    <PillButton variant="signal" onClick={() => handleJoin(col.title)}>
+                      <Send className="w-3.5 h-3.5 mr-1.5" /> Request to Join Squad
+                    </PillButton>
+                  </div>
                 </div>
               </div>
             </BracketCard>
           ))}
         </div>
 
-        {/* Create Collab Modal */}
+        {/* Modal for creating collab post */}
         {createModal && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-            <div className="w-full max-w-lg rounded-2xl bg-zinc-950 border border-zinc-800 p-6 space-y-4 font-mono text-xs">
-              <div className="flex items-center justify-between pb-3 border-b border-zinc-800">
-                <span className="font-bold text-white uppercase text-sm">CREATE COLLABORATION POST</span>
-                <button onClick={() => setCreateModal(false)} className="text-zinc-500 hover:text-white">✕</button>
+          <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+            <div className="max-w-xl w-full bg-zinc-950 border border-zinc-800 p-6 rounded-3xl space-y-5 shadow-2xl">
+              <div className="flex items-center justify-between border-b border-zinc-900 pb-3">
+                <h3 className="text-xl font-heading font-bold text-white">Create Cross-Campus Collab</h3>
+                <button
+                  onClick={() => setCreateModal(false)}
+                  className="text-zinc-500 hover:text-white font-mono text-sm"
+                >
+                  ✕
+                </button>
               </div>
 
-              <form onSubmit={handleCreate} className="space-y-4">
-                <div className="space-y-1">
-                  <label className="text-zinc-400 uppercase text-[10px]">Project or Hackathon Title</label>
+              <form onSubmit={handleCreate} className="space-y-4 font-mono text-xs">
+                <div>
+                  <label className="text-zinc-400 block mb-1">PROJECT OR HACKATHON TITLE</label>
                   <input
                     type="text"
                     required
-                    placeholder="e.g. Nexus 2026: Autonomous Rover Project"
+                    placeholder="e.g. Smart India Hackathon: AgriTech AI Drone"
                     value={title}
                     onChange={e => setTitle(e.target.value)}
-                    className="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-zinc-800 text-white focus:outline-none"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-zinc-900 border border-zinc-800 text-white focus:outline-none focus:border-cyan"
                   />
                 </div>
 
-                <div className="space-y-1">
-                  <label className="text-zinc-400 uppercase text-[10px]">Project Mission &amp; Goals</label>
-                  <textarea
-                    rows={3}
-                    placeholder="Explain what you are building and which roles are missing..."
-                    value={desc}
-                    onChange={e => setDesc(e.target.value)}
-                    className="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-zinc-800 text-white focus:outline-none"
-                  />
-                </div>
-
-                <div className="space-y-1">
-                  <label className="text-zinc-400 uppercase text-[10px]">Skills Needed (Comma Separated)</label>
+                <div>
+                  <label className="text-zinc-400 block mb-1">TARGET EVENT / HACKATHON</label>
                   <input
                     type="text"
-                    value={skills}
-                    onChange={e => setSkills(e.target.value)}
-                    className="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-zinc-800 text-white focus:outline-none"
+                    placeholder="e.g. HackGrid 2026, PES TechFest, Inter-College Capstone"
+                    value={hackathon}
+                    onChange={e => setHackathon(e.target.value)}
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-zinc-900 border border-zinc-800 text-white focus:outline-none focus:border-cyan"
                   />
                 </div>
 
-                <div className="pt-2 flex justify-end gap-3">
-                  <button
-                    type="button"
-                    onClick={() => setCreateModal(false)}
-                    className="px-4 py-2 rounded-full border border-zinc-800 text-zinc-400 hover:text-white"
-                  >
+                <div>
+                  <label className="text-zinc-400 block mb-1">REQUIRED TECH STACK (COMMA-SEPARATED)</label>
+                  <input
+                    type="text"
+                    placeholder="e.g. React.js, FastAPI, PyTorch, Figma"
+                    value={skills}
+                    onChange={e => setSkills(e.target.value)}
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-zinc-900 border border-zinc-800 text-white focus:outline-none focus:border-cyan"
+                  />
+                </div>
+
+                <div>
+                  <label className="text-zinc-400 block mb-1">PROJECT MISSION &amp; SPECIFICATIONS</label>
+                  <textarea
+                    rows={4}
+                    placeholder="Describe problem statement, what roles you need, expected workload..."
+                    value={desc}
+                    onChange={e => setDesc(e.target.value)}
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-zinc-900 border border-zinc-800 text-white focus:outline-none focus:border-cyan leading-relaxed"
+                  />
+                </div>
+
+                <div className="flex justify-end gap-3 pt-3 border-t border-zinc-900">
+                  <PillButton variant="outline" onClick={() => setCreateModal(false)}>
                     Cancel
-                  </button>
+                  </PillButton>
                   <PillButton variant="signal" type="submit">
-                    Publish Collab Post
+                    Publish Across Campuses
                   </PillButton>
                 </div>
               </form>

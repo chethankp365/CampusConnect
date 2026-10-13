@@ -55,38 +55,38 @@ export default function EventsPage() {
 
   return (
     <AppShell>
-      <div className="space-y-8 font-body">
+      <div className="space-y-10 font-body">
         {/* Header */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-zinc-900">
-          <div>
-            <div className="flex items-center gap-2 mb-1">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pb-8 border-b border-zinc-900">
+          <div className="space-y-2">
+            <div className="flex items-center gap-2.5">
               <HudLabel label="ARENA // CAMPUS EVENTS" color="acid" />
-              <span className="text-zinc-500 font-mono text-xs">• Realtime QR Validation</span>
+              <span className="text-zinc-500 font-mono text-sm">• Realtime QR Validation &amp; Verification</span>
             </div>
-            <h1 className="text-2xl sm:text-3xl font-heading font-semibold text-white tracking-tight">
+            <h1 className="text-3xl sm:text-5xl font-heading font-bold text-white tracking-tight">
               Hackathons, Workshops &amp; Tech Talks
             </h1>
-            <p className="text-zinc-400 font-mono text-xs mt-0.5">
-              Participate in flagship competitions across 15 engineering campuses.
+            <p className="text-zinc-400 font-mono text-sm max-w-2xl">
+              Participate in flagship competitions, register for tickets, and earn verified participation credentials across 15 engineering campuses.
             </p>
           </div>
 
-          <div className="flex items-center gap-2 font-mono text-xs">
+          <div className="flex items-center gap-3 font-mono text-xs">
             <button
               onClick={() => setActiveTab('all')}
-              className={`px-4 py-2 rounded-full border transition-all ${
+              className={`px-5 py-2.5 rounded-full border transition-all text-sm font-semibold cursor-pointer ${
                 activeTab === 'all'
-                  ? 'bg-signal text-white border-signal'
+                  ? 'bg-signal text-white border-signal shadow-lg shadow-signal/20'
                   : 'bg-zinc-900 text-zinc-400 border-zinc-800'
               }`}
             >
-              All Events
+              All Events ({events.length})
             </button>
             <button
               onClick={() => setActiveTab('registered')}
-              className={`px-4 py-2 rounded-full border transition-all ${
+              className={`px-5 py-2.5 rounded-full border transition-all text-sm font-semibold cursor-pointer ${
                 activeTab === 'registered'
-                  ? 'bg-signal text-white border-signal'
+                  ? 'bg-signal text-white border-signal shadow-lg shadow-signal/20'
                   : 'bg-zinc-900 text-zinc-400 border-zinc-800'
               }`}
             >
@@ -95,8 +95,8 @@ export default function EventsPage() {
           </div>
         </div>
 
-        {/* Events Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Events Grid - Big Cards with High Impact */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filtered.map(evt => {
             const spotsRemaining = evt.capacity - evt.registeredCount;
             const pct = Math.round((evt.registeredCount / evt.capacity) * 100);
@@ -106,69 +106,71 @@ export default function EventsPage() {
                 key={evt.id}
                 headerTag={`${evt.category.toUpperCase()} // ${evt.mode.toUpperCase()}`}
                 glowColor={evt.isRegistered ? 'acid' : 'signal'}
-                className="flex flex-col justify-between overflow-hidden"
+                className="flex flex-col justify-between overflow-hidden p-8 shadow-xl"
               >
-                <div className="space-y-3">
-                  <div className="relative h-40 -mx-6 -mt-2 overflow-hidden rounded-t-[18px]">
+                <div className="space-y-4">
+                  <div className="relative h-48 -mx-8 -mt-4 overflow-hidden rounded-t-[20px]">
                     <img
                       src={evt.bannerUrl}
                       alt={evt.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute top-2 right-2 px-2 py-0.5 rounded bg-black/70 backdrop-blur-sm text-white font-mono text-[10px] border border-white/20">
+                    <div className="absolute top-3 right-3 px-3 py-1 rounded-xl bg-black/80 backdrop-blur-md text-white font-mono text-xs border border-white/20 font-medium">
                       {evt.organizerName}
                     </div>
                   </div>
 
-                  <h3 className="text-base font-semibold text-white line-clamp-2">{evt.title}</h3>
-                  <p className="text-xs font-mono text-zinc-400 line-clamp-2 leading-relaxed">
+                  <h3 className="text-xl font-heading font-bold text-white line-clamp-2 leading-snug">
+                    {evt.title}
+                  </h3>
+                  <p className="text-xs sm:text-sm font-mono text-zinc-400 line-clamp-2 leading-relaxed">
                     {evt.description}
                   </p>
 
-                  <div className="space-y-1.5 font-mono text-xs text-zinc-400 pt-1">
-                    <div className="flex items-center gap-2">
-                      <Clock className="w-3.5 h-3.5 text-zinc-500" />
+                  <div className="space-y-2 font-mono text-xs sm:text-sm text-zinc-400 pt-2">
+                    <div className="flex items-center gap-2.5">
+                      <Clock className="w-4 h-4 text-zinc-500 shrink-0" />
                       <span className="truncate">{new Date(evt.startTime).toLocaleDateString('en-IN', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })}</span>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <MapPin className="w-3.5 h-3.5 text-zinc-500" />
-                      <span className="truncate">{evt.venue || evt.onlineLink || 'Campus Venue'}</span>
+                    <div className="flex items-center gap-2.5">
+                      <MapPin className="w-4 h-4 text-zinc-500 shrink-0" />
+                      <span className="truncate">{evt.venue || evt.onlineLink || 'Campus Tech Quad'}</span>
                     </div>
                   </div>
 
-                  {/* Capacity Meter */}
-                  <div className="space-y-1 font-mono text-[11px] pt-2">
+                  {/* Capacity Bar */}
+                  <div className="space-y-1.5 font-mono text-xs pt-3">
                     <div className="flex justify-between text-zinc-400">
-                      <span>Capacity</span>
-                      <span className={spotsRemaining <= 10 ? 'text-signal font-bold' : 'text-acid'}>
+                      <span>Seat Capacity ({evt.registeredCount}/{evt.capacity})</span>
+                      <span className={spotsRemaining <= 15 ? 'text-signal font-bold' : 'text-acid font-bold'}>
                         {spotsRemaining} spots left
                       </span>
                     </div>
-                    <div className="h-1.5 bg-zinc-800 rounded-full overflow-hidden">
+                    <div className="h-2 bg-zinc-800 rounded-full overflow-hidden">
                       <div
-                        className="h-full bg-signal transition-all duration-500"
+                        className="h-full bg-gradient-to-r from-signal to-acid transition-all duration-700 rounded-full"
                         style={{ width: `${pct}%` }}
                       />
                     </div>
                   </div>
                 </div>
 
-                <div className="pt-4 border-t border-zinc-900 mt-4 flex items-center justify-between">
+                <div className="pt-6 border-t border-zinc-900 mt-6 flex items-center justify-between">
                   {evt.isRegistered ? (
                     <PillButton
                       variant="outline"
                       onClick={() => setSelectedTicketEvent(evt)}
-                      className="w-full text-acid border-acid/50 hover:bg-acid hover:text-black"
+                      className="w-full text-acid border-acid/50 hover:bg-acid hover:text-black text-sm py-3"
                     >
-                      <QrCode className="w-3.5 h-3.5 mr-1.5" /> VIEW DIGITAL TICKET
+                      <QrCode className="w-4 h-4 mr-2" /> VIEW DIGITAL TICKET
                     </PillButton>
                   ) : (
                     <PillButton
                       variant="signal"
                       onClick={() => handleRegister(evt.id)}
-                      className="w-full"
+                      className="w-full text-sm py-3"
                     >
-                      REGISTER NOW (+5 XP)
+                      REGISTER FOR EVENT (+5 XP)
                     </PillButton>
                   )}
                 </div>
@@ -177,44 +179,44 @@ export default function EventsPage() {
           })}
         </div>
 
-        {/* Digital QR Ticket Modal */}
+        {/* Digital QR Ticket Modal - Spacious */}
         {selectedTicketEvent && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md">
-            <div className="w-full max-w-sm rounded-[24px] bg-zinc-950 border-2 border-signal p-6 text-center space-y-6 font-mono relative crt-overlay">
+            <div className="w-full max-w-md rounded-[32px] bg-zinc-950 border-2 border-signal p-8 text-center space-y-6 font-mono relative crt-overlay shadow-2xl">
               <button
                 onClick={() => setSelectedTicketEvent(null)}
-                className="absolute top-4 right-4 text-zinc-500 hover:text-white text-sm"
+                className="absolute top-5 right-5 text-zinc-500 hover:text-white text-base"
               >
                 ✕
               </button>
 
-              <div className="space-y-1">
+              <div className="space-y-1.5">
                 <HudLabel label="CRYPTOGRAPHIC TICKET" color="acid" />
-                <h3 className="text-lg font-heading font-bold text-white mt-2">
+                <h3 className="text-xl font-heading font-bold text-white mt-2">
                   {selectedTicketEvent.title}
                 </h3>
-                <p className="text-[10px] text-zinc-400">{selectedTicketEvent.venue}</p>
+                <p className="text-xs text-zinc-400">{selectedTicketEvent.venue}</p>
               </div>
 
-              {/* High Contrast QR Code Display */}
-              <div className="p-4 bg-white rounded-2xl mx-auto w-48 h-48 flex flex-col items-center justify-center shadow-2xl">
-                <QrCode className="w-36 h-36 text-black" />
-                <span className="text-[10px] text-black font-bold tracking-widest mt-1">
+              {/* High Contrast QR Code */}
+              <div className="p-6 bg-white rounded-3xl mx-auto w-56 h-56 flex flex-col items-center justify-center shadow-2xl">
+                <QrCode className="w-44 h-44 text-black" />
+                <span className="text-xs text-black font-bold tracking-widest mt-2">
                   {selectedTicketEvent.qrToken}
                 </span>
               </div>
 
-              <div className="space-y-2 text-xs">
-                <div className="p-2.5 rounded-xl bg-zinc-900 border border-zinc-800 text-left space-y-1">
-                  <div className="flex justify-between text-zinc-400 text-[10px]">
-                    <span>ATTENDEE</span>
-                    <span className="text-acid">VERIFIED</span>
+              <div className="space-y-3 text-xs sm:text-sm">
+                <div className="p-4 rounded-2xl bg-zinc-900 border border-zinc-800 text-left space-y-1">
+                  <div className="flex justify-between text-zinc-400 text-xs">
+                    <span>ATTENDEE CREDENTIAL</span>
+                    <span className="text-acid font-bold">VERIFIED</span>
                   </div>
-                  <div className="text-white font-bold">{CURRENT_USER.fullName}</div>
-                  <div className="text-zinc-500 text-[10px]">ID: {CURRENT_USER.username} • {CURRENT_USER.collegeName.split(' ')[0]}</div>
+                  <div className="text-white font-bold text-base">{CURRENT_USER.fullName}</div>
+                  <div className="text-zinc-500 text-xs">ID: {CURRENT_USER.username} • {CURRENT_USER.collegeName}</div>
                 </div>
 
-                <p className="text-[10px] text-zinc-500">
+                <p className="text-xs text-zinc-400">
                   Scan at event registration desk for instant check-in &amp; +15 XP bonus.
                 </p>
               </div>
@@ -225,7 +227,7 @@ export default function EventsPage() {
                   toast.success('Certificate generator unlocked upon check-in.');
                   window.open(`/verify/CERT-${selectedTicketEvent.qrToken}`, '_blank');
                 }}
-                className="w-full"
+                className="w-full text-sm py-3"
               >
                 View Public Certificate &rarr;
               </PillButton>

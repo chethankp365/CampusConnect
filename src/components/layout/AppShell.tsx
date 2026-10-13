@@ -264,8 +264,8 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           </div>
         </header>
 
-        {/* Page Content Viewport */}
-        <main className="flex-1 p-4 sm:p-6 lg:p-8 max-w-7xl w-full mx-auto">{children}</main>
+        {/* Page Content Viewport - Spatially Roomy */}
+        <main className="flex-1 p-6 sm:p-10 lg:p-12 max-w-[1700px] w-full mx-auto">{children}</main>
       </div>
 
       {/* 3. Mobile Bottom Tab Bar (Safe Area Aware) */}
