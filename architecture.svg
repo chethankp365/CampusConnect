@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 340" width="1200" height="340" role="img" aria-label="Campus Connect request flow">
+  <defs>
+    <clipPath id="r"><rect width="1200" height="340" rx="20"/></clipPath>
+    <pattern id="g" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M30 0H0V30" fill="none" stroke="#fff" stroke-opacity="0.04"/>
+    </pattern>
+  </defs>
+  <g clip-path="url(#r)">
+    <rect width="1200" height="340" fill="#0a0a0c"/>
+    <rect width="1200" height="340" fill="url(#g)"/>
+
+    <text x="40" y="44" font-family="'SF Mono',Consolas,'Courier New',monospace" font-size="13" letter-spacing="2" fill="#b6ff3b">// REQUEST FLOW</text>
+
+    <!-- connector path (hidden, used for motion) -->
+    <path id="flow" d="M150 170 H1050" stroke="#ffffff" stroke-opacity="0.12" stroke-width="2" stroke-dasharray="4 8" fill="none">
+      <animate attributeName="stroke-dashoffset" from="0" to="-48" dur="2s" repeatCount="indefinite"/>
+    </path>
+
+    <!-- travelling packets -->
+    <circle r="6" fill="#ff4d1a">
+      <animateMotion dur="6s" repeatCount="indefinite"><mpath href="#flow"/></animateMotion>
+    </circle>
+    <circle r="6" fill="#22d3ee">
+      <animateMotion dur="6s" begin="2s" repeatCount="indefinite"><mpath href="#flow"/></animateMotion>
+    </circle>
+    <circle r="6" fill="#b6ff3b">
+      <animateMotion dur="6s" begin="4s" repeatCount="indefinite"><mpath href="#flow"/></animateMotion>
+    </circle>
+
+    <g font-family="'Helvetica Neue',Arial,sans-serif" text-anchor="middle">
+      <!-- node 1 -->
+      <g transform="translate(110 170)">
+        <rect x="-60" y="-52" width="120" height="104" rx="16" fill="#131316" stroke="#ffffff" stroke-opacity="0.15"/>
+        <text y="-6" font-size="28">🎓</text>
+        <text y="26" font-size="15" font-weight="700" fill="#fff">Student</text>
+        <text y="44" font-size="11" fill="#8d8d95">browser / mobile</text>
+      </g>
+      <!-- node 2 -->
+      <g transform="translate(310 170)">
+        <rect x="-70" y="-52" width="140" height="104" rx="16" fill="#131316" stroke="#22d3ee" stroke-opacity="0.5"/>
+        <text y="-6" font-size="28">⚛️</text>
+        <text y="26" font-size="15" font-weight="700" fill="#fff">React UI</text>
+        <text y="44" font-size="11" fill="#8d8d95">dashboard · forms</text>
+      </g>
+      <!-- node 3 -->
+      <g transform="translate(520 170)">
+        <rect x="-70" y="-52" width="140" height="104" rx="16" fill="#131316" stroke="#b6ff3b" stroke-opacity="0.5"/>
+        <text y="-6" font-size="28">🛡️</text>
+        <text y="26" font-size="15" font-weight="700" fill="#fff">API + Auth</text>
+        <text y="44" font-size="11" fill="#8d8d95">roles · validation</text>
+      </g>
+      <!-- node 4 -->
+      <g transform="translate(740 170)">
+        <rect x="-76" y="-52" width="152" height="104" rx="16" fill="#131316" stroke="#ff4d1a" stroke-opacity="0.6"/>
+        <text y="-6" font-size="28">🗄️</text>
+        <text y="26" font-size="15" font-weight="700" fill="#fff">PostgreSQL</text>
+        <text y="44" font-size="11" fill="#8d8d95">RLS · pgvector</text>
+      </g>
+      <!-- node 5 -->
+      <g transform="translate(960 170)">
+        <rect x="-76" y="-52" width="152" height="104" rx="16" fill="#131316" stroke="#a78bfa" stroke-opacity="0.6"/>
+        <text y="-6" font-size="28">✨</text>
+        <text y="26" font-size="15" font-weight="700" fill="#fff">Gemini</text>
+        <text y="44" font-size="11" fill="#8d8d95">embeddings · LLM</text>
+      </g>
+      <!-- node 6 -->
+      <g transform="translate(1110 170)">
+        <rect x="-50" y="-52" width="100" height="104" rx="16" fill="#131316" stroke="#ffffff" stroke-opacity="0.15"/>
+        <text y="-6" font-size="28">💬</text>
+        <text y="26" font-size="15" font-weight="700" fill="#fff">Answer</text>
+        <text y="44" font-size="11" fill="#8d8d95">grounded</text>
+      </g>
+    </g>
+
+    <!-- node pulse borders -->
+    <g fill="none" stroke-width="2">
+      <rect x="240" y="118" width="140" height="104" rx="16" stroke="#22d3ee" opacity="0">
+        <animate attributeName="opacity" values="0;0.8;0" dur="6s" begin="0.8s" repeatCount="indefinite"/>
+      </rect>
+      <rect x="450" y="118" width="140" height="104" rx="16" stroke="#b6ff3b" opacity="0">
+        <animate attributeName="opacity" values="0;0.8;0" dur="6s" begin="1.9s" repeatCount="indefinite"/>
+      </rect>
+      <rect x="664" y="118" width="152" height="104" rx="16" stroke="#ff4d1a" opacity="0">
+        <animate attributeName="opacity" values="0;0.8;0" dur="6s" begin="3s" repeatCount="indefinite"/>
+      </rect>
+    </g>
+
+    <text x="40" y="304" font-family="'SF Mono',Consolas,'Courier New',monospace" font-size="12" fill="#6f6f78">Every query is scoped by Row Level Security — students only ever see data they are allowed to see.</text>
+  </g>
+</svg>

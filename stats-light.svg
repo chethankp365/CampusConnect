@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" width="1200" height="300" role="img" aria-label="Campus Connect network at a glance">
+  <defs>
+    <clipPath id="r"><rect width="1200" height="300" rx="20"/></clipPath>
+  </defs>
+  <g clip-path="url(#r)">
+    <rect width="1200" height="300" fill="#f6f5f2"/>
+    <text x="40" y="44" font-family="'SF Mono',Consolas,'Courier New',monospace" font-size="13" letter-spacing="2" fill="#ff4d1a">// NETWORK AT A GLANCE</text>
+
+    <g font-family="'Helvetica Neue',Arial,sans-serif">
+      <!-- card 1 -->
+      <g transform="translate(40 76)">
+        <rect width="262" height="190" rx="18" fill="#111111" stroke="#000" stroke-opacity="0.1"/>
+        <text x="24" y="40" font-family="'SF Mono',Consolas,monospace" font-size="11" letter-spacing="2" fill="#5c5c66">CONNECTED CAMPUSES</text>
+        <text x="24" y="102" font-size="56" font-weight="700" fill="#0891b2">15</text>
+        <rect x="24" y="130" width="214" height="6" rx="3" fill="#111" fill-opacity="0.07"/>
+        <rect x="24" y="130" width="0" height="6" rx="3" fill="#0891b2">
+          <animate attributeName="width" values="0;214;214" keyTimes="0;0.4;1" dur="5s" repeatCount="indefinite"/>
+        </rect>
+        <text x="24" y="164" font-family="'SF Mono',Consolas,monospace" font-size="12" fill="#6a6a74">zero network barriers</text>
+      </g>
+      <!-- card 2 -->
+      <g transform="translate(322 76)">
+        <rect width="262" height="190" rx="18" fill="#111111" stroke="#000" stroke-opacity="0.1"/>
+        <text x="24" y="40" font-family="'SF Mono',Consolas,monospace" font-size="11" letter-spacing="2" fill="#5c5c66">VERIFIED STUDENTS</text>
+        <text x="24" y="102" font-size="56" font-weight="700" fill="#4d9e00">1,480+</text>
+        <rect x="24" y="130" width="214" height="6" rx="3" fill="#111" fill-opacity="0.07"/>
+        <rect x="24" y="130" width="0" height="6" rx="3" fill="#4d9e00">
+          <animate attributeName="width" values="0;180;180" keyTimes="0;0.5;1" dur="5s" begin="0.3s" repeatCount="indefinite"/>
+        </rect>
+        <text x="24" y="164" font-family="'SF Mono',Consolas,monospace" font-size="12" fill="#6a6a74">domain auth validated</text>
+      </g>
+      <!-- card 3 -->
+      <g transform="translate(604 76)">
+        <rect width="262" height="190" rx="18" fill="#111111" stroke="#000" stroke-opacity="0.1"/>
+        <text x="24" y="40" font-family="'SF Mono',Consolas,monospace" font-size="11" letter-spacing="2" fill="#5c5c66">SENIOR MENTORS</text>
+        <text x="24" y="102" font-size="56" font-weight="700" fill="#ff4d1a">240+</text>
+        <rect x="24" y="130" width="214" height="6" rx="3" fill="#111" fill-opacity="0.07"/>
+        <rect x="24" y="130" width="0" height="6" rx="3" fill="#ff4d1a">
+          <animate attributeName="width" values="0;120;120" keyTimes="0;0.5;1" dur="5s" begin="0.6s" repeatCount="indefinite"/>
+        </rect>
+        <text x="24" y="164" font-family="'SF Mono',Consolas,monospace" font-size="12" fill="#6a6a74">available for code reviews</text>
+      </g>
+      <!-- card 4: ring -->
+      <g transform="translate(886 76)">
+        <rect width="274" height="190" rx="18" fill="#111111" stroke="#000" stroke-opacity="0.1"/>
+        <text x="24" y="40" font-family="'SF Mono',Consolas,monospace" font-size="11" letter-spacing="2" fill="#5c5c66">SKILL MATCH AFFINITY</text>
+        <g transform="translate(86 118)">
+          <circle r="54" fill="none" stroke="#000" stroke-opacity="0.08" stroke-width="10"/>
+          <circle r="54" fill="none" stroke="#4d9e00" stroke-width="10" stroke-linecap="round"
+                  stroke-dasharray="339.3" stroke-dashoffset="339.3" transform="rotate(-90)">
+            <animate attributeName="stroke-dashoffset" values="339.3;27.1;27.1;339.3" keyTimes="0;0.4;0.85;1" dur="5s" repeatCount="indefinite"/>
+          </circle>
+          <text y="9" text-anchor="middle" font-size="26" font-weight="700" fill="#111">92%</text>
+        </g>
+        <text x="170" y="112" font-family="'SF Mono',Consolas,monospace" font-size="12" fill="#1a1a1d">3 / 3 skills</text>
+        <text x="170" y="132" font-family="'SF Mono',Consolas,monospace" font-size="12" fill="#6a6a74">covered</text>
+      </g>
+    </g>
+  </g>
+</svg>
