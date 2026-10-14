@@ -230,27 +230,27 @@ export function HeroSection() {
         </div>
       )}
 
-      {/* Hero Content Section - Spatially Expanded */}
+      {/* Hero Content Section */}
       <section className="relative z-10 min-h-screen flex flex-col justify-end pb-16 md:justify-center md:pb-0 px-6 sm:px-12 md:px-16 lg:px-20 xl:px-24 pointer-events-auto">
-        <div className="max-w-2xl lg:max-w-3xl xl:max-w-4xl">
+        <div className="max-w-2xl lg:max-w-3xl">
           {/* Blurred Intro Label */}
           <div
-            className="pointer-events-none select-none mb-6 sm:mb-8 text-black font-normal leading-[1.3] text-[clamp(22px,3.8vw,36px)]"
+            className="pointer-events-none select-none mb-5 sm:mb-6 text-black font-normal leading-[1.3] text-[clamp(20px,2.8vw,30px)]"
             style={{ filter: 'blur(3.2px)' }}
           >
             <p>Hey there, meet N.O.V.A,</p>
             <p>Campus Connect&apos;s Navigation &amp; Opportunity Voice Assistant</p>
           </div>
 
-          {/* Typewriter Paragraph - Large & Impactful */}
-          <div className="mb-8 sm:mb-10 text-black font-normal leading-[1.3] text-[clamp(24px,4vw,42px)] min-h-[90px] tracking-tight">
+          {/* Typewriter Paragraph */}
+          <div className="mb-7 sm:mb-8 text-black font-normal leading-[1.3] text-[clamp(21px,2.8vw,36px)] min-h-[82px] tracking-tight">
             <span>{displayed}</span>
             {!done && (
               <span className="inline-block w-[3.5px] h-[1.15em] bg-black align-middle ml-[3px] animate-blink" />
             )}
           </div>
 
-          {/* Action Pills - Generously Sized & Tactical */}
+          {/* Action Pills */}
           <div
             className={`flex flex-wrap gap-2.5 sm:gap-3 transition-all duration-700 transform ${
               pillsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'
@@ -258,31 +258,31 @@ export function HeroSection() {
           >
             <Link
               href="/signup?intent=notes"
-              className="inline-flex items-center justify-center bg-white text-black border border-black/15 rounded-full text-[15px] sm:text-[17px] font-medium px-5 sm:px-7 py-2.5 sm:py-3.5 whitespace-nowrap hover:bg-black hover:text-white transition-all duration-200 shadow-md hover:scale-105 active:scale-95"
+              className="inline-flex items-center justify-center bg-white text-black border border-black/15 rounded-full text-[14px] sm:text-[16px] font-medium px-4 sm:px-6 py-2 sm:py-3 whitespace-nowrap hover:bg-black hover:text-white transition-all duration-200 shadow-md hover:scale-105 active:scale-95"
             >
               Find study notes
             </Link>
             <Link
               href="/signup?intent=events"
-              className="inline-flex items-center justify-center bg-white text-black border border-black/15 rounded-full text-[15px] sm:text-[17px] font-medium px-5 sm:px-7 py-2.5 sm:py-3.5 whitespace-nowrap hover:bg-black hover:text-white transition-all duration-200 shadow-md hover:scale-105 active:scale-95"
+              className="inline-flex items-center justify-center bg-white text-black border border-black/15 rounded-full text-[14px] sm:text-[16px] font-medium px-4 sm:px-6 py-2 sm:py-3 whitespace-nowrap hover:bg-black hover:text-white transition-all duration-200 shadow-md hover:scale-105 active:scale-95"
             >
               Discover events
             </Link>
             <Link
               href="/signup?intent=match"
-              className="inline-flex items-center justify-center bg-white text-black border border-black/15 rounded-full text-[15px] sm:text-[17px] font-medium px-5 sm:px-7 py-2.5 sm:py-3.5 whitespace-nowrap hover:bg-black hover:text-white transition-all duration-200 shadow-md hover:scale-105 active:scale-95"
+              className="inline-flex items-center justify-center bg-white text-black border border-black/15 rounded-full text-[14px] sm:text-[16px] font-medium px-4 sm:px-6 py-2 sm:py-3 whitespace-nowrap hover:bg-black hover:text-white transition-all duration-200 shadow-md hover:scale-105 active:scale-95"
             >
               Match with teammates
             </Link>
             <Link
               href="/signup?intent=opportunities"
-              className="inline-flex items-center justify-center bg-white text-black border border-black/15 rounded-full text-[15px] sm:text-[17px] font-medium px-5 sm:px-7 py-2.5 sm:py-3.5 whitespace-nowrap hover:bg-black hover:text-white transition-all duration-200 shadow-md hover:scale-105 active:scale-95"
+              className="inline-flex items-center justify-center bg-white text-black border border-black/15 rounded-full text-[14px] sm:text-[16px] font-medium px-4 sm:px-6 py-2 sm:py-3 whitespace-nowrap hover:bg-black hover:text-white transition-all duration-200 shadow-md hover:scale-105 active:scale-95"
             >
               Explore opportunities
             </Link>
             <Link
               href="/signup"
-              className="inline-flex items-center justify-center bg-zinc-900/90 text-white border border-black/20 rounded-full text-[15px] sm:text-[17px] font-medium px-5 sm:px-7 py-2.5 sm:py-3.5 gap-2.5 whitespace-nowrap hover:bg-black hover:text-white transition-all duration-200 shadow-lg hover:scale-105 active:scale-95 backdrop-blur-md"
+              className="inline-flex items-center justify-center bg-zinc-900/90 text-white border border-black/20 rounded-full text-[14px] sm:text-[16px] font-medium px-4 sm:px-6 py-2 sm:py-3 gap-2.5 whitespace-nowrap hover:bg-black hover:text-white transition-all duration-200 shadow-lg hover:scale-105 active:scale-95 backdrop-blur-md"
             >
               <span>Join free in 30 seconds</span>
               <ArrowUpRight className="w-4 h-4" />
