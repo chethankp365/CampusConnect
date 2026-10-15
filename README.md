@@ -27,11 +27,6 @@
 
 <br/>
 
-<picture>
-  <source media="(prefers-color-scheme: light)" srcset="stats-light.svg">
-  <img src="stats%20(1).svg" alt="Network at a glance" width="100%"/>
-</picture>
-
 <p align="center">
 <picture>
   <source media="(prefers-color-scheme: light)" srcset="divider-light.svg">
