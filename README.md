@@ -1,8 +1,8 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: light)" srcset="assets/hero-light.svg">
-  <img src="assets/hero.svg" alt="Campus Connect" width="100%"/>
+  <source media="(prefers-color-scheme: light)" srcset="hero-light.svg">
+  <img src="hero.svg" alt="Campus Connect" width="100%"/>
 </picture>
 
 <br/>
@@ -28,14 +28,14 @@
 <br/>
 
 <picture>
-  <source media="(prefers-color-scheme: light)" srcset="assets/stats-light.svg">
-  <img src="assets/stats.svg" alt="Network at a glance" width="100%"/>
+  <source media="(prefers-color-scheme: light)" srcset="stats-light.svg">
+  <img src="stats%20(1).svg" alt="Network at a glance" width="100%"/>
 </picture>
 
 <p align="center">
 <picture>
-  <source media="(prefers-color-scheme: light)" srcset="assets/divider-light.svg">
-  <img src="assets/divider.svg" alt="" width="100%"/>
+  <source media="(prefers-color-scheme: light)" srcset="divider-light.svg">
+  <img src="divider%20(1).svg" alt="" width="100%"/>
 </picture>
 </p>
 
@@ -70,8 +70,8 @@ Student life runs on scattered channels: notes buried in one WhatsApp group, an 
 
 <p align="center">
 <picture>
-  <source media="(prefers-color-scheme: light)" srcset="assets/divider-light.svg">
-  <img src="assets/divider.svg" alt="" width="100%"/>
+  <source media="(prefers-color-scheme: light)" srcset="divider-light.svg">
+  <img src="divider%20(1).svg" alt="" width="100%"/>
 </picture>
 </p>
 
@@ -93,8 +93,8 @@ Student life runs on scattered channels: notes buried in one WhatsApp group, an 
 
 <p align="center">
 <picture>
-  <source media="(prefers-color-scheme: light)" srcset="assets/divider-light.svg">
-  <img src="assets/divider.svg" alt="" width="100%"/>
+  <source media="(prefers-color-scheme: light)" srcset="divider-light.svg">
+  <img src="divider%20(1).svg" alt="" width="100%"/>
 </picture>
 </p>
 
@@ -105,17 +105,17 @@ Student life runs on scattered channels: notes buried in one WhatsApp group, an 
 ### Landing
 
 <p align="center">
-  <img src="screenshots/01-landing.png" alt="Landing page with N.O.V.A" width="100%"/>
+  <img src="01-landing.png" alt="Landing page with N.O.V.A" width="100%"/>
 </p>
 
 <table>
 <tr>
-<td width="50%"><img src="screenshots/02-unified-grid.png" alt="One unified grid across all campuses"/></td>
-<td width="50%"><img src="screenshots/03-system-shift.png" alt="From WhatsApp chaos to mission control"/></td>
+<td width="50%"><img src="02-unified-grid.png" alt="One unified grid across all campuses"/></td>
+<td width="50%"><img src="03-system-shift.png" alt="From WhatsApp chaos to mission control"/></td>
 </tr>
 <tr>
-<td width="50%"><img src="screenshots/04-features.png" alt="Feature modules"/></td>
-<td width="50%"><img src="screenshots/05-journey.png" alt="How Campus Connect powers your semester"/></td>
+<td width="50%"><img src="04-features.png" alt="Feature modules"/></td>
+<td width="50%"><img src="05-journey.png" alt="How Campus Connect powers your semester"/></td>
 </tr>
 </table>
 
@@ -123,8 +123,8 @@ Student life runs on scattered channels: notes buried in one WhatsApp group, an 
 
 <table>
 <tr>
-<td width="50%"><img src="screenshots/06-matchmaking-demo.png" alt="Interactive matchmaking demo"/></td>
-<td width="50%"><img src="screenshots/07-signup.png" alt="Create Student Node"/></td>
+<td width="50%"><img src="06-matchmaking-demo.png" alt="Interactive matchmaking demo"/></td>
+<td width="50%"><img src="07-signup.png" alt="Create Student Node"/></td>
 </tr>
 </table>
 
@@ -133,69 +133,69 @@ Student life runs on scattered channels: notes buried in one WhatsApp group, an 
 <details open>
 <summary><b>📊 Dashboard</b>: streaks, XP, rank, attendance health, N.O.V.A</summary>
 <br/>
-<img src="screenshots/08-dashboard.png" alt="Student dashboard" width="100%"/>
+<img src="08-dashboard.png" alt="Student dashboard" width="100%"/>
 </details>
 
 <details>
 <summary><b>📚 Study Materials</b>: 840+ verified academic documents</summary>
 <br/>
-<img src="screenshots/09-study-materials.png" alt="Study materials" width="100%"/>
+<img src="09-study-materials.png" alt="Study materials" width="100%"/>
 </details>
 
 <details>
 <summary><b>🎟️ Events</b>: hackathons, talks and competitions with QR tickets</summary>
 <br/>
-<img src="screenshots/10-events.png" alt="Campus events" width="100%"/>
+<img src="10-events.png" alt="Campus events" width="100%"/>
 </details>
 
 <details>
 <summary><b>💼 Opportunities</b>: internships, research and hackathons with skill-match scores</summary>
 <br/>
-<img src="screenshots/11-opportunities.png" alt="Opportunities" width="100%"/>
+<img src="11-opportunities.png" alt="Opportunities" width="100%"/>
 </details>
 
 <details>
 <summary><b>🌐 Network</b>: peers and mentors across 15 colleges</summary>
 <br/>
-<img src="screenshots/12-network.png" alt="Peer directory" width="100%"/>
+<img src="12-network.png" alt="Peer directory" width="100%"/>
 </details>
 
 <details>
 <summary><b>🏆 Leaderboard</b>: inter-college merit matrix</summary>
 <br/>
-<img src="screenshots/13-leaderboard.png" alt="Leaderboard" width="100%"/>
+<img src="13-leaderboard.png" alt="Leaderboard" width="100%"/>
 </details>
 
 <details>
 <summary><b>🤖 N.O.V.A Assistant</b>: grounded campus intelligence</summary>
 <br/>
-<img src="screenshots/14-nova-assistant.png" alt="N.O.V.A assistant" width="100%"/>
+<img src="14-nova-assistant.png" alt="N.O.V.A assistant" width="100%"/>
 </details>
 
 <details>
 <summary><b>🛡️ Attendance Guardian</b>: safe-bunk simulator</summary>
 <br/>
-<img src="screenshots/15-attendance.png" alt="Attendance guardian" width="100%"/>
+<img src="15-attendance.png" alt="Attendance guardian" width="100%"/>
 </details>
 
 <details>
 <summary><b>🧭 Skill Match & Squad Builder</b>: natural language to ranked teammates</summary>
 <br/>
-<img src="screenshots/16-skill-match.png" alt="Skill match" width="100%"/>
+<img src="16-skill-match.png" alt="Skill match" width="100%"/>
 </details>
 
 <p align="center">
 <picture>
-  <source media="(prefers-color-scheme: light)" srcset="assets/divider-light.svg">
-  <img src="assets/divider.svg" alt="" width="100%"/>
+  <source media="(prefers-color-scheme: light)" srcset="divider-light.svg">
+  <img src="divider%20(1).svg" alt="" width="100%"/>
 </picture>
 </p>
 
 ## 🏗️ Architecture
 
 <picture>
-  <source media="(prefers-color-scheme: light)" srcset="assets/architecture-light.svg">
-  <img src="assets/architecture.svg" alt="Request flow" width="100%"/>
+  <source media="(prefers-color-scheme: light)" srcset="architecture-light.svg">
+  <img src="architecture.svg" alt="Request flow" width="100%"/>
 </picture>
 
 ### Roles
@@ -208,8 +208,8 @@ Student life runs on scattered channels: notes buried in one WhatsApp group, an 
 
 <p align="center">
 <picture>
-  <source media="(prefers-color-scheme: light)" srcset="assets/divider-light.svg">
-  <img src="assets/divider.svg" alt="" width="100%"/>
+  <source media="(prefers-color-scheme: light)" srcset="divider-light.svg">
+  <img src="divider%20(1).svg" alt="" width="100%"/>
 </picture>
 </p>
 
@@ -218,16 +218,16 @@ Student life runs on scattered channels: notes buried in one WhatsApp group, an 
 **N**avigation & **O**pportunity **V**oice **A**ssistant answers from your platform data rather than guessing.
 
 <picture>
-  <source media="(prefers-color-scheme: light)" srcset="assets/nova-light.svg">
-  <img src="assets/nova.svg" alt="N.O.V.A grounded retrieval pipeline" width="100%"/>
+  <source media="(prefers-color-scheme: light)" srcset="nova-light.svg">
+  <img src="nova.svg" alt="N.O.V.A grounded retrieval pipeline" width="100%"/>
 </picture>
 
 Example questions: *"Am I short on attendance for any subjects this semester?"*, *"What hackathons and tech symposiums are happening this month?"*, *"Who knows Flutter at BMSCE?"*
 
 <p align="center">
 <picture>
-  <source media="(prefers-color-scheme: light)" srcset="assets/divider-light.svg">
-  <img src="assets/divider.svg" alt="" width="100%"/>
+  <source media="(prefers-color-scheme: light)" srcset="divider-light.svg">
+  <img src="divider%20(1).svg" alt="" width="100%"/>
 </picture>
 </p>
 
@@ -243,14 +243,14 @@ Rule score = matched required skills ÷ total required skills × 100
 ```
 
 <picture>
-  <source media="(prefers-color-scheme: light)" srcset="assets/skillmatch-light.svg">
-  <img src="assets/skillmatch.svg" alt="Skill match two-layer ranking" width="100%"/>
+  <source media="(prefers-color-scheme: light)" srcset="skillmatch-light.svg">
+  <img src="skillmatch.svg" alt="Skill match two-layer ranking" width="100%"/>
 </picture>
 
 <p align="center">
 <picture>
-  <source media="(prefers-color-scheme: light)" srcset="assets/divider-light.svg">
-  <img src="assets/divider.svg" alt="" width="100%"/>
+  <source media="(prefers-color-scheme: light)" srcset="divider-light.svg">
+  <img src="divider%20(1).svg" alt="" width="100%"/>
 </picture>
 </p>
 
@@ -259,8 +259,8 @@ Rule score = matched required skills ÷ total required skills × 100
 Hall-ticket eligibility is a math problem, so Campus Connect treats it like one.
 
 <picture>
-  <source media="(prefers-color-scheme: light)" srcset="assets/attendance-light.svg">
-  <img src="assets/attendance.svg" alt="Attendance Guardian forecast" width="100%"/>
+  <source media="(prefers-color-scheme: light)" srcset="attendance-light.svg">
+  <img src="attendance.svg" alt="Attendance Guardian forecast" width="100%"/>
 </picture>
 
 ```text
@@ -273,8 +273,8 @@ The 75% threshold is configurable per institution. Records are **owner-only** an
 
 <p align="center">
 <picture>
-  <source media="(prefers-color-scheme: light)" srcset="assets/divider-light.svg">
-  <img src="assets/divider.svg" alt="" width="100%"/>
+  <source media="(prefers-color-scheme: light)" srcset="divider-light.svg">
+  <img src="divider%20(1).svg" alt="" width="100%"/>
 </picture>
 </p>
 
@@ -301,8 +301,8 @@ The 75% threshold is configurable per institution. Records are **owner-only** an
 
 <p align="center">
 <picture>
-  <source media="(prefers-color-scheme: light)" srcset="assets/divider-light.svg">
-  <img src="assets/divider.svg" alt="" width="100%"/>
+  <source media="(prefers-color-scheme: light)" srcset="divider-light.svg">
+  <img src="divider%20(1).svg" alt="" width="100%"/>
 </picture>
 </p>
 
@@ -319,8 +319,8 @@ The 75% threshold is configurable per institution. Records are **owner-only** an
 
 <p align="center">
 <picture>
-  <source media="(prefers-color-scheme: light)" srcset="assets/divider-light.svg">
-  <img src="assets/divider.svg" alt="" width="100%"/>
+  <source media="(prefers-color-scheme: light)" srcset="divider-light.svg">
+  <img src="divider%20(1).svg" alt="" width="100%"/>
 </picture>
 </p>
 
@@ -349,16 +349,16 @@ gantt
 
 <p align="center">
 <picture>
-  <source media="(prefers-color-scheme: light)" srcset="assets/divider-light.svg">
-  <img src="assets/divider.svg" alt="" width="100%"/>
+  <source media="(prefers-color-scheme: light)" srcset="divider-light.svg">
+  <img src="divider%20(1).svg" alt="" width="100%"/>
 </picture>
 </p>
 
 ## 🚀 Run Locally
 
 ```bash
-git clone https://github.com/<your-username>/campus-connect.git
-cd campus-connect
+git clone https://github.com/chethankp365/CampusConnect.git
+cd CampusConnect
 
 npm install
 cp .env.example .env     # add your database URL and Gemini API key
@@ -369,8 +369,8 @@ npm run dev
 
 <p align="center">
 <picture>
-  <source media="(prefers-color-scheme: light)" srcset="assets/divider-light.svg">
-  <img src="assets/divider.svg" alt="" width="100%"/>
+  <source media="(prefers-color-scheme: light)" srcset="divider-light.svg">
+  <img src="divider%20(1).svg" alt="" width="100%"/>
 </picture>
 </p>
 
