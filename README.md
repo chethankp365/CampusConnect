@@ -7,7 +7,7 @@
 
 <br/>
 
-**An inter-college student network for notes, events, opportunities, teammates and AI-powered answers — all in one place.**
+**An inter-college student network for notes, events, opportunities, teammates and AI-powered answers, all in one place.**
 
 <br/>
 
@@ -21,7 +21,7 @@
 
 <br/>
 
-[Problem](#-the-problem) · [Features](#-features) · [Screenshots](#-product-tour) · [Architecture](#-architecture) · [AI](#-nova--the-campus-ai) · [Skill Match](#-skill-match-engine) · [Tech Stack](#-tech-stack) · [Roadmap](#-roadmap)
+[Problem](#-the-problem) · [Features](#-features) · [Screenshots](#-product-tour) · [Architecture](#-architecture) · [N.O.V.A](#-nova--the-campus-ai) · [Skill Match](#-skill-match-engine) · [Attendance](#-attendance-guardian) · [Tech Stack](#-tech-stack) · [Roadmap](#-roadmap)
 
 </div>
 
@@ -198,23 +198,6 @@ Student life runs on scattered channels: notes buried in one WhatsApp group, an 
   <img src="assets/architecture.svg" alt="Request flow" width="100%"/>
 </picture>
 
-```mermaid
-flowchart LR
-    S([🎓 Student]) --> UI[React UI]
-    UI --> API[API + Auth]
-    API --> RLS{{Row Level Security}}
-    RLS --> DB[(PostgreSQL)]
-    DB --- V[(pgvector embeddings)]
-    API --> AI[Gemini]
-    AI --> V
-    AI --> R([Grounded answer])
-
-    classDef hot fill:#ff4d1a,stroke:#ff4d1a,color:#fff;
-    classDef cool fill:#0e2a33,stroke:#22d3ee,color:#fff;
-    class RLS hot;
-    class V,AI cool;
-```
-
 ### Roles
 
 | Role | Can do |
@@ -234,25 +217,10 @@ flowchart LR
 
 **N**avigation & **O**pportunity **V**oice **A**ssistant answers from your platform data rather than guessing.
 
-```mermaid
-sequenceDiagram
-    autonumber
-    actor U as Student
-    participant N as N.O.V.A
-    participant A as Backend API
-    participant D as DB + pgvector
-    participant G as Gemini
-
-    U->>N: "Can I safely bunk OS on Friday?"
-    N->>G: Detect intent (attendance)
-    G-->>N: intent = attendance, subject = OS
-    N->>A: Authenticated query
-    A->>D: Fetch records (RLS-scoped)
-    D-->>A: attended / total classes
-    A-->>N: Structured data
-    N->>G: Generate answer from retrieved data only
-    G-->>U: Grounded answer + link to Attendance
-```
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="assets/nova-light.svg">
+  <img src="assets/nova.svg" alt="N.O.V.A grounded retrieval pipeline" width="100%"/>
+</picture>
 
 Example questions: *"Am I short on attendance for any subjects this semester?"*, *"What hackathons and tech symposiums are happening this month?"*, *"Who knows Flutter at BMSCE?"*
 
@@ -274,16 +242,10 @@ Two layers work together:
 Rule score = matched required skills ÷ total required skills × 100
 ```
 
-```mermaid
-flowchart LR
-    A["💡 'AI crop-disease app, need Flutter dev, UI designer, Python backend'"] --> B[Gemini skill extraction]
-    B --> C["Flutter · Python · Figma"]
-    C --> D[Rule overlap score]
-    C --> E[Embedding similarity]
-    D --> F{{Rank candidates}}
-    E --> F
-    F --> G["🥇 Ananya Deshmukh · 92%"]
-```
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="assets/skillmatch-light.svg">
+  <img src="assets/skillmatch.svg" alt="Skill match two-layer ranking" width="100%"/>
+</picture>
 
 <p align="center">
 <picture>
@@ -295,6 +257,11 @@ flowchart LR
 ## 🛡️ Attendance Guardian
 
 Hall-ticket eligibility is a math problem, so Campus Connect treats it like one.
+
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="assets/attendance-light.svg">
+  <img src="assets/attendance.svg" alt="Attendance Guardian forecast" width="100%"/>
+</picture>
 
 ```text
 Attendance %         = attended ÷ total × 100
